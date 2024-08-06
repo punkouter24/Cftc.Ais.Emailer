@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cftc.Ais.Emailer.Api", "Cftc.Ais.Emailer.Api\Cftc.Ais.Emailer.Api.csproj", "{15FBD01A-89B7-4531-887C-C46CF6C8B118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cftc.Ais.Emailer.BlazorClient", "Cftc.Ais.Emailer.BlazorClient\Cftc.Ais.Emailer.BlazorClient.csproj", "{92C77B6A-FBE1-4632-9DF6-EEF3B681E686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cftc.Ais.Emailer.Application", "Cftc.Ais.Emailer.Application\Cftc.Ais.Emailer.Application.csproj", "{F07B9BD5-3C14-4C44-9DB8-B201125919E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cftc.Ais.Emailer.Tests", "Cftc.Ais.Emailer.Tests\Cftc.Ais.Emailer.Tests.csproj", "{4355AD66-C837-49E5-A87B-AE881DF06E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cftc_Ais_Emailer_Functions", "Cftc.Ais.Emailer.Functions\Cftc_Ais_Emailer_Functions.csproj", "{9F95406E-18B0-48D8-86CB-522243255DD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15FBD01A-89B7-4531-887C-C46CF6C8B118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15FBD01A-89B7-4531-887C-C46CF6C8B118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15FBD01A-89B7-4531-887C-C46CF6C8B118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15FBD01A-89B7-4531-887C-C46CF6C8B118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C77B6A-FBE1-4632-9DF6-EEF3B681E686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C77B6A-FBE1-4632-9DF6-EEF3B681E686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C77B6A-FBE1-4632-9DF6-EEF3B681E686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C77B6A-FBE1-4632-9DF6-EEF3B681E686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F07B9BD5-3C14-4C44-9DB8-B201125919E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07B9BD5-3C14-4C44-9DB8-B201125919E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07B9BD5-3C14-4C44-9DB8-B201125919E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07B9BD5-3C14-4C44-9DB8-B201125919E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4355AD66-C837-49E5-A87B-AE881DF06E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4355AD66-C837-49E5-A87B-AE881DF06E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4355AD66-C837-49E5-A87B-AE881DF06E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4355AD66-C837-49E5-A87B-AE881DF06E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F95406E-18B0-48D8-86CB-522243255DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F95406E-18B0-48D8-86CB-522243255DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F95406E-18B0-48D8-86CB-522243255DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F95406E-18B0-48D8-86CB-522243255DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

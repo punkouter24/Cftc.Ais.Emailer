@@ -1,0 +1,108 @@
+﻿@page "/"
+@using Cftc.Ais.Emailer.Application.DTOs
+@using Cftc.Ais.Emailer.BlazorClient.Services
+@inject EmailService EmailService
+
+<h3>Send Email</h3>
+
+<EditForm Model="@email" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="fromName">From Name:</label>
+        <InputText id="fromName" @bind-Value="email.FromName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="fromEmail">From Email:</label>
+        <InputText id="fromEmail" @bind-Value="email.FromEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="toName">To Name:</label>
+        <InputText id="toName" @bind-Value="email.ToName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="toEmail">To Email:</label>
+        <InputText id="toEmail" @bind-Value="email.ToEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="subject">Subject:</label>
+        <InputText id="subject" @bind-Value="email.Subject" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="body">Body:</label>
+        <InputTextArea id="body" @bind-Value="email.Body" class="form-control" rows="5" />
+    </div>
+    <div class="form-check">
+        <InputCheckbox id="isHtml" @bind-Value="email.IsHtml" class="form-check-input" />
+        <label class="form-check-label" for="isHtml">Is HTML?</label>
+    </div>
+    <div class="form-group">
+        <label for="priority">Priority:</label>
+        <InputSelect id="priority" @bind-Value="email.Priority" class="form-control">
+            @foreach (var priority in Enum.GetValues(typeof(EmailPriority)))
+            {
+                <option value="@priority">@priority</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="form-group">
+        <label for="attachments">Attachments:</label>
+        <InputFile OnChange="@LoadFiles" multiple class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Email</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info mt-3">@message</div>
+}
+
+@code {
+    private EmailDto email = new EmailDto();
+    private string message = string.Empty;
+    private List<IBrowserFile> loadedFiles = new();
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        loadedFiles.Clear();
+        foreach (var file in e.GetMultipleFiles(5))
+        {
+            loadedFiles.Add(file);
+        }
+
+        message = $"{loadedFiles.Count} files selected";
+        StateHasChanged();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            email.Attachments = new List<AttachmentDto>();
+            foreach (var file in loadedFiles)
+            {
+                var buffer = new byte[file.Size];
+                await file.OpenReadStream().ReadAsync(buffer);
+                email.Attachments.Add(new AttachmentDto
+                    {
+                        FileName = file.Name,
+                        ContentType = file.ContentType,
+                        Size = file.Size,
+                        AttachmentId = Guid.NewGuid(),
+                        Content = buffer
+                    });
+            }
+
+            message = await EmailService.SendEmailAsync(email);
+            email = new EmailDto();
+            loadedFiles.Clear();
+        }
+        catch (Exception ex)
+        {
+            message = $"Error sending email: {ex.Message}";
+        }
+    }
+}
